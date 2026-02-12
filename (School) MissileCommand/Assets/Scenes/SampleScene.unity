@@ -643,8 +643,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 199329298}
-  - component: {fileID: 199329300}
-  - component: {fileID: 199329299}
   m_Layer: 0
   m_Name: Camera Turret 1
   m_TagString: Untagged
@@ -667,65 +665,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1664393101}
   m_LocalEulerAnglesHint: {x: 9.485, y: 271.816, z: 0}
---- !u!81 &199329299
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 199329297}
-  m_Enabled: 0
---- !u!20 &199329300
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 199329297}
-  m_Enabled: 0
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_Iso: 200
-  m_ShutterSpeed: 0.005
-  m_Aperture: 16
-  m_FocusDistance: 10
-  m_FocalLength: 50
-  m_BladeCount: 5
-  m_Curvature: {x: 2, y: 11}
-  m_BarrelClipping: 0.25
-  m_Anamorphism: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 21.242067
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
 --- !u!1 &203567063
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,8 +705,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 243526955}
-  - component: {fileID: 243526957}
-  - component: {fileID: 243526956}
   m_Layer: 0
   m_Name: Camera Turret 2
   m_TagString: Untagged
@@ -790,65 +727,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 670446626}
   m_LocalEulerAnglesHint: {x: 9.49, y: 270, z: 0}
---- !u!81 &243526956
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 243526954}
-  m_Enabled: 0
---- !u!20 &243526957
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 243526954}
-  m_Enabled: 0
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_Iso: 200
-  m_ShutterSpeed: 0.005
-  m_Aperture: 16
-  m_FocusDistance: 10
-  m_FocalLength: 50
-  m_BladeCount: 5
-  m_Curvature: {x: 2, y: 11}
-  m_BarrelClipping: 0.25
-  m_Anamorphism: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 21.242067
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
 --- !u!1 &342792340
 GameObject:
   m_ObjectHideFlags: 0
@@ -2172,7 +2050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 30
   minYaw: -10
-  maxYaw: 10
+  maxYaw: 40
   moveSpeed: 5
   minHeight: 0
   maxHeight: 5
@@ -2193,7 +2071,7 @@ MonoBehaviour:
   firePoints:
   - {fileID: 1107109442}
   - {fileID: 759597182}
-  fireRate: 0.25
+  fireRate: 1
   projectileForce: 40
   isActive: 0
 --- !u!1 &1085931684
@@ -2815,8 +2693,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1464716527}
-  - component: {fileID: 1464716529}
-  - component: {fileID: 1464716528}
   m_Layer: 0
   m_Name: Camera Turret 3
   m_TagString: Untagged
@@ -2839,65 +2715,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1068287496}
   m_LocalEulerAnglesHint: {x: 9.49, y: 270, z: 0}
---- !u!81 &1464716528
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464716526}
-  m_Enabled: 0
---- !u!20 &1464716529
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464716526}
-  m_Enabled: 0
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_Iso: 200
-  m_ShutterSpeed: 0.005
-  m_Aperture: 16
-  m_FocusDistance: 10
-  m_FocalLength: 50
-  m_BladeCount: 5
-  m_Curvature: {x: 2, y: 11}
-  m_BarrelClipping: 0.25
-  m_Anamorphism: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 21.242067
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
 --- !u!1 &1497894455
 GameObject:
   m_ObjectHideFlags: 0
@@ -3282,7 +3099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 30
-  minYaw: -10
+  minYaw: -40
   maxYaw: 10
   moveSpeed: 5
   minHeight: 0
@@ -3304,7 +3121,7 @@ MonoBehaviour:
   firePoints:
   - {fileID: 203567064}
   - {fileID: 608553521}
-  fireRate: 0.25
+  fireRate: 1
   projectileForce: 40
   isActive: 0
 --- !u!1 &1793087976
