@@ -12,11 +12,15 @@ public class TurretShooter : MonoBehaviour
 
     private float nextFireTime;
 
-    void Update()
+  void Update()
     {
         if (!isActive) return;
 
-        if (Input.GetMouseButton(0) && Time.time >= nextFireTime)
+        bool isFiring =
+            Input.GetButton("Fire1") ||
+            Input.GetKey(KeyCode.Space);
+
+        if (isFiring && Time.time >= nextFireTime)
         {
             Shoot();
             nextFireTime = Time.time + fireRate;
