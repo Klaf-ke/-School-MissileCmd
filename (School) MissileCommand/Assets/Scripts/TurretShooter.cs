@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class TurretShooter : MonoBehaviour
 {
@@ -8,40 +9,119 @@ public class TurretShooter : MonoBehaviour
     public float fireRate = 0.25f;
     public float projectileForce = 40f;
 
+    [Header("Damage Settings")]
+    public float damage = 10f;
+
+
+    [Header("Ammo Settings")]
+    public int magazineSize = 12;
+    public int maxReserveAmmo = 120;
+    public float reloadTime = 2f;
+
     [HideInInspector] public bool isActive = false;
 
     private float nextFireTime;
 
-  void Update()
+    private int currentAmmo;
+    private int reserveAmmo;
+
+    private bool isReloading = false;
+    private int currentBarrelIndex = 0;
+    
+    [SerializeField] private TurretUIManager uiManager;
+    
+    void Start()
+    {
+        currentAmmo = magazineSize;
+        reserveAmmo = maxReserveAmmo;
+        UpdateAmmoUI();
+    }
+
+    void Update()
     {
         if (!isActive) return;
+        if (isReloading) return;
 
         bool isFiring =
             Input.GetButton("Fire1") ||
             Input.GetKey(KeyCode.Space);
 
-        if (isFiring && Time.time >= nextFireTime)
+        if (isFiring && Time.time >= nextFireTime && currentAmmo > 0)
         {
             Shoot();
+            currentAmmo--;
             nextFireTime = Time.time + fireRate;
+            UpdateAmmoUI();
+        }
+
+    
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (currentAmmo < magazineSize && reserveAmmo > 0)
+            {
+                StartCoroutine(Reload());
+            }
         }
     }
 
     void Shoot()
     {
-        foreach (Transform firePoint in firePoints)
-        {
-            GameObject projectile = Instantiate(
-                projectilePrefab,
-                firePoint.position,
-                firePoint.rotation
-            );
+        Transform firePoint = firePoints[currentBarrelIndex];
 
-            Rigidbody rb = projectile.GetComponent<Rigidbody>();
-            if (rb != null)
-            {
-                rb.linearVelocity = firePoint.forward * projectileForce;
-            }
+        GameObject projectile = Instantiate(
+            projectilePrefab,
+            firePoint.position,
+            firePoint.rotation
+        );
+
+        Rigidbody rb = projectile.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.linearVelocity = firePoint.forward * projectileForce;
         }
+
+    
+        Projectile projectileScript = projectile.GetComponent<Projectile>();
+        if (projectileScript != null)
+        {
+            projectileScript.SetDamage(damage);
+        }
+
+   
+        currentBarrelIndex++;
+        if (currentBarrelIndex >= firePoints.Length)
+            currentBarrelIndex = 0;
+    }
+
+    IEnumerator Reload()
+    {
+        if (reserveAmmo <= 0)
+            yield break;
+
+        isReloading = true;
+
+        yield return new WaitForSeconds(reloadTime);
+
+        int ammoNeeded = magazineSize - currentAmmo;
+
+        int ammoToLoad = Mathf.Min(ammoNeeded, reserveAmmo);
+
+        currentAmmo += ammoToLoad;
+        reserveAmmo -= ammoToLoad;
+
+        isReloading = false;
+        UpdateAmmoUI();
+    }
+
+    
+    public void AddAmmo(int amount)
+    {
+        reserveAmmo += amount;
+        reserveAmmo = Mathf.Clamp(reserveAmmo, 0, maxReserveAmmo);
+    }
+    private void UpdateAmmoUI()
+    {
+        if (isActive && uiManager != null)
+        uiManager.UpdateAmmo(currentAmmo, reserveAmmo);
     }
 }

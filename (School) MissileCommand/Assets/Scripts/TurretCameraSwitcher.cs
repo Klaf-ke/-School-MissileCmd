@@ -57,6 +57,7 @@ public class TurretCameraSwitcher : MonoBehaviour
         if (currentIndex >= cameraTargets.Length) currentIndex = 0;
 
         ActivateTurret(currentIndex);
+        turrets[currentIndex].SendMessage("UpdateAmmoUI");
         if (turretSelectorUI != null)
         turretSelectorUI.UpdateSelection(currentIndex, cameraTargets.Length);
 
@@ -81,6 +82,8 @@ public class TurretCameraSwitcher : MonoBehaviour
             StopCoroutine(transitionRoutine);
 
         transitionRoutine = StartCoroutine(SmoothTransition(cameraTargets[currentIndex]));
+
+        
     }
 
 

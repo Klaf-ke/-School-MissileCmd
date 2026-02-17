@@ -310,9 +310,10 @@ GameObject:
   - component: {fileID: 153547821}
   - component: {fileID: 153547820}
   - component: {fileID: 153547819}
+  - component: {fileID: 153547823}
   m_Layer: 0
   m_Name: Bunker 2
-  m_TagString: Untagged
+  m_TagString: Bunker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -332,7 +333,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -400,12 +401,27 @@ Transform:
   m_GameObject: {fileID: 153547818}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.65, y: 3.02, z: -7.47}
+  m_LocalPosition: {x: 18.59, y: 3.02, z: -7.47}
   m_LocalScale: {x: 6.5983777, y: 3.6238, z: 6.637907}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &153547823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153547818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 985e790436b695c4a9154ae2cb717d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  destructionEffect: {fileID: 0}
+  bunkerIconUI: {fileID: 0}
 --- !u!1 &153965484
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,7 +456,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1538,7 +1554,7 @@ Transform:
   m_GameObject: {fileID: 670446622}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.44, y: 2.53, z: -7.66}
+  m_LocalPosition: {x: -4.44, y: 2.53, z: -7.08}
   m_LocalScale: {x: 1, y: 2.9241548, z: 1.5084}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1584,7 +1600,12 @@ MonoBehaviour:
   - {fileID: 926455341}
   fireRate: 0.25
   projectileForce: 40
+  damage: 1
+  magazineSize: 12
+  maxReserveAmmo: 50
+  reloadTime: 2
   isActive: 0
+  uiManager: {fileID: 1177650375}
 --- !u!1 &759597181
 GameObject:
   m_ObjectHideFlags: 0
@@ -1786,7 +1807,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -2027,7 +2048,7 @@ Transform:
   m_GameObject: {fileID: 1068287492}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.11320323, z: 0, w: 0.9935719}
-  m_LocalPosition: {x: -4.44, y: 2.8, z: 5.35}
+  m_LocalPosition: {x: -4.46, y: 2.8, z: 10.26}
   m_LocalScale: {x: 1, y: 2.9241548, z: 1.5084}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2073,7 +2094,12 @@ MonoBehaviour:
   - {fileID: 759597182}
   fireRate: 1
   projectileForce: 40
+  damage: 3
+  magazineSize: 20
+  maxReserveAmmo: 20
+  reloadTime: 2
   isActive: 0
+  uiManager: {fileID: 1177650375}
 --- !u!1 &1085931684
 GameObject:
   m_ObjectHideFlags: 0
@@ -2086,9 +2112,10 @@ GameObject:
   - component: {fileID: 1085931687}
   - component: {fileID: 1085931686}
   - component: {fileID: 1085931685}
+  - component: {fileID: 1085931689}
   m_Layer: 0
-  m_Name: Bunker
-  m_TagString: Untagged
+  m_Name: Bunker 1
+  m_TagString: Bunker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2108,7 +2135,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -2176,12 +2203,27 @@ Transform:
   m_GameObject: {fileID: 1085931684}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.65, y: 3.02, z: -20.12}
+  m_LocalPosition: {x: 18.42, y: 3.02, z: -26.27}
   m_LocalScale: {x: 6.5983777, y: 3.6238, z: 6.637907}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1085931689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085931684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 985e790436b695c4a9154ae2cb717d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  destructionEffect: {fileID: 0}
+  bunkerIconUI: {fileID: 0}
 --- !u!1 &1092415912
 GameObject:
   m_ObjectHideFlags: 0
@@ -2411,15 +2453,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 5066438053662591487, guid: 51a5e9c49b497f745be1b85a27d4ac24, type: 3}
-  spawners:
-  - {fileID: 1092415914}
-  - {fileID: 197219250}
-  - {fileID: 427838640}
   uiManager: {fileID: 1177650375}
-  minSpawnDelay: 0.5
+  turretShooters:
+  - {fileID: 1664393103}
+  - {fileID: 670446628}
+  - {fileID: 1068287498}
+  minSpawnDelay: 1
   maxSpawnDelay: 2
   baseEnemiesPerWave: 5
   difficultyMultiplier: 1.5
+  ammoRewardPerWave: 20
+  bossPrefab: {fileID: 5066438053662591487, guid: 86a5c5531c03d084ba4a1c77806ebb97, type: 3}
+  bossSpawnPoint: {fileID: 1938379658}
+  mainCamera: {fileID: 857067057}
+  bossZoomDistance: 8
+  introDuration: 2
+  bunkers:
+  - {fileID: 1085931689}
+  - {fileID: 153547823}
+  - {fileID: 1599655666}
+  spawnPoints:
+  - spawnLocation: {fileID: 1092415913}
+    linkedBunker: {fileID: 1085931689}
+    isActive: 0
+  - spawnLocation: {fileID: 197219249}
+    linkedBunker: {fileID: 153547823}
+    isActive: 0
+  - spawnLocation: {fileID: 427838639}
+    linkedBunker: {fileID: 1599655666}
+    isActive: 0
 --- !u!114 &1177650375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2437,6 +2499,115 @@ MonoBehaviour:
   nextWaveText: {fileID: 1932835732}
   waveProgressBar: {fileID: 342792342}
   nextWaveDisplayTime: 2
+  ammoText: {fileID: 1413267483}
+--- !u!1 &1242377857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1242377861}
+  - component: {fileID: 1242377860}
+  - component: {fileID: 1242377859}
+  - component: {fileID: 1242377858}
+  m_Layer: 0
+  m_Name: Ground (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1242377858
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242377857}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1242377859
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242377857}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 729a8aad66b988b488ed526782539d40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1242377860
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242377857}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1242377861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242377857}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -54.9, y: 0.64, z: -7.150173}
+  m_LocalScale: {x: 160.95383, y: 1, z: 77.20378}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1306630631
 GameObject:
   m_ObjectHideFlags: 0
@@ -2684,6 +2855,142 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1340044226}
   m_CullTransparentMesh: 1
+--- !u!1 &1413267481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1413267482}
+  - component: {fileID: 1413267484}
+  - component: {fileID: 1413267483}
+  m_Layer: 5
+  m_Name: AmmoText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1413267482
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413267481}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1793087980}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -100.400024, y: 27.099976}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1413267483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413267481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Ammo: ??/??'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 28
+  m_fontSizeBase: 28
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: -31.237022, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1413267484
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413267481}
+  m_CullTransparentMesh: 1
 --- !u!1 &1464716526
 GameObject:
   m_ObjectHideFlags: 0
@@ -2877,9 +3184,10 @@ GameObject:
   - component: {fileID: 1599655664}
   - component: {fileID: 1599655663}
   - component: {fileID: 1599655662}
+  - component: {fileID: 1599655666}
   m_Layer: 0
   m_Name: Bunker 3
-  m_TagString: Untagged
+  m_TagString: Bunker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2899,7 +3207,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -2967,12 +3275,27 @@ Transform:
   m_GameObject: {fileID: 1599655661}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.65, y: 3.02, z: 5.7}
+  m_LocalPosition: {x: 18.73, y: 3.02, z: 10.54}
   m_LocalScale: {x: 6.5983777, y: 3.6238, z: 6.637907}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1599655666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599655661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 985e790436b695c4a9154ae2cb717d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  destructionEffect: {fileID: 0}
+  bunkerIconUI: {fileID: 0}
 --- !u!1 &1664393097
 GameObject:
   m_ObjectHideFlags: 0
@@ -3077,7 +3400,7 @@ Transform:
   m_GameObject: {fileID: 1664393097}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.11320323, z: 0, w: 0.9935719}
-  m_LocalPosition: {x: -4.4467106, y: 2.53, z: -19.935368}
+  m_LocalPosition: {x: -3.46, y: 2.53, z: -24.2}
   m_LocalScale: {x: 1, y: 2.9241548, z: 1.5084}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3123,7 +3446,12 @@ MonoBehaviour:
   - {fileID: 608553521}
   fireRate: 1
   projectileForce: 40
+  damage: 3
+  magazineSize: 20
+  maxReserveAmmo: 20
+  reloadTime: 2
   isActive: 0
+  uiManager: {fileID: 1177650375}
 --- !u!1 &1793087976
 GameObject:
   m_ObjectHideFlags: 0
@@ -3223,6 +3551,7 @@ RectTransform:
   - {fileID: 1932835731}
   - {fileID: 342792341}
   - {fileID: 1497894456}
+  - {fileID: 1413267482}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3400,7 +3729,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3803,6 +4132,7 @@ SceneRoots:
   - {fileID: 3306058}
   - {fileID: 832575519}
   - {fileID: 1111685672}
+  - {fileID: 1242377861}
   - {fileID: 1664393101}
   - {fileID: 670446626}
   - {fileID: 1068287496}
@@ -3810,7 +4140,7 @@ SceneRoots:
   - {fileID: 1938379658}
   - {fileID: 876565079}
   - {fileID: 2117278413}
-  - {fileID: 1793087980}
   - {fileID: 1085931688}
   - {fileID: 153547822}
   - {fileID: 1599655665}
+  - {fileID: 1793087980}

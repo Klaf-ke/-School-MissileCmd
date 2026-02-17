@@ -17,8 +17,10 @@ public class TurretUIManager : MonoBehaviour
     private int currentWave = 1;
     private int remainingEnemies = 0;
     private int totalEnemiesThisWave = 1;
-
-    // -------------------
+    
+    [Header("Ammo UI")]
+    [SerializeField] private TMP_Text ammoText;
+    
 
     public void SetWave(int waveNumber, int enemiesThisWave)
     {
@@ -71,6 +73,12 @@ public class TurretUIManager : MonoBehaviour
         StopAllCoroutines();
         nextWaveText.gameObject.SetActive(true);
         StartCoroutine(HideNextWaveAfterTime());
+    }
+    public void UpdateAmmo(int current, int reserve)
+    {
+        if (ammoText == null) return;
+
+        ammoText.text = $"AMMO: {current} / {reserve}";
     }
 
     private IEnumerator HideNextWaveAfterTime()
