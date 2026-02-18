@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 25039534}
   - component: {fileID: 25039533}
   - component: {fileID: 25039532}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Turret 1 Gun 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -659,7 +659,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 199329298}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Camera Turret 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -690,7 +690,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 203567064}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Firepoint 1 Turret 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -721,7 +721,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 243526955}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Camera Turret 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -844,7 +844,7 @@ GameObject:
   - component: {fileID: 389972067}
   - component: {fileID: 389972066}
   - component: {fileID: 389972065}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Turret 1 Gun 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1184,7 +1184,7 @@ GameObject:
   - component: {fileID: 509231412}
   - component: {fileID: 509231411}
   - component: {fileID: 509231410}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Turret 3 Gun 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1428,7 +1428,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 608553521}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Firepoint 2 Turret 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1464,9 +1464,9 @@ GameObject:
   - component: {fileID: 670446623}
   - component: {fileID: 670446627}
   - component: {fileID: 670446628}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Turret 2
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1615,7 +1615,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 759597182}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Firepoint 2 Turret 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1891,7 +1891,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 926455341}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Firepoint 2 Turret 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1922,7 +1922,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1037678743}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Firepoint 1 Turret 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1958,9 +1958,9 @@ GameObject:
   - component: {fileID: 1068287493}
   - component: {fileID: 1068287497}
   - component: {fileID: 1068287498}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Turret 3
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2092,7 +2092,7 @@ MonoBehaviour:
   firePoints:
   - {fileID: 1107109442}
   - {fileID: 759597182}
-  fireRate: 1
+  fireRate: 0.5
   projectileForce: 40
   damage: 3
   magazineSize: 20
@@ -2277,7 +2277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1107109442}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Firepoint 1 Turret 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2452,7 +2452,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0372edbf30ce5794baf082f7c7d3da72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 5066438053662591487, guid: 51a5e9c49b497f745be1b85a27d4ac24, type: 3}
+  groundEnemyPrefab: {fileID: 6534646284553169452, guid: 51a5e9c49b497f745be1b85a27d4ac24, type: 3}
+  flyingEnemyPrefab: {fileID: -5171810243836330062, guid: 1e1b476bde9064e41b59885275962544, type: 3}
+  flyingSpawnChance: 0.25
   uiManager: {fileID: 1177650375}
   turretShooters:
   - {fileID: 1664393103}
@@ -2500,114 +2502,6 @@ MonoBehaviour:
   waveProgressBar: {fileID: 342792342}
   nextWaveDisplayTime: 2
   ammoText: {fileID: 1413267483}
---- !u!1 &1242377857
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1242377861}
-  - component: {fileID: 1242377860}
-  - component: {fileID: 1242377859}
-  - component: {fileID: 1242377858}
-  m_Layer: 0
-  m_Name: Ground (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &1242377858
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242377857}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1242377859
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242377857}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 729a8aad66b988b488ed526782539d40, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1242377860
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242377857}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1242377861
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242377857}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -54.9, y: 0.64, z: -7.150173}
-  m_LocalScale: {x: 160.95383, y: 1, z: 77.20378}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1306630631
 GameObject:
   m_ObjectHideFlags: 0
@@ -2620,7 +2514,7 @@ GameObject:
   - component: {fileID: 1306630635}
   - component: {fileID: 1306630634}
   - component: {fileID: 1306630633}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Turret 2 Gun 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3000,7 +2894,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1464716527}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Camera Turret 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3310,9 +3204,9 @@ GameObject:
   - component: {fileID: 1664393098}
   - component: {fileID: 1664393102}
   - component: {fileID: 1664393103}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Turret 1
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3444,7 +3338,7 @@ MonoBehaviour:
   firePoints:
   - {fileID: 203567064}
   - {fileID: 608553521}
-  fireRate: 1
+  fireRate: 0.5
   projectileForce: 40
   damage: 3
   magazineSize: 20
@@ -3852,7 +3746,7 @@ GameObject:
   - component: {fileID: 2106182946}
   - component: {fileID: 2106182945}
   - component: {fileID: 2106182944}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Turret 3 Gun 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4024,7 +3918,7 @@ GameObject:
   - component: {fileID: 2117294598}
   - component: {fileID: 2117294597}
   - component: {fileID: 2117294596}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Turret 2 Gun 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4132,7 +4026,6 @@ SceneRoots:
   - {fileID: 3306058}
   - {fileID: 832575519}
   - {fileID: 1111685672}
-  - {fileID: 1242377861}
   - {fileID: 1664393101}
   - {fileID: 670446626}
   - {fileID: 1068287496}

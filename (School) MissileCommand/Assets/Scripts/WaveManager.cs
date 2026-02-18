@@ -4,7 +4,10 @@ using UnityEngine;
 public class WaveManager : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private Enemy groundEnemyPrefab;
+    [SerializeField] private Enemy flyingEnemyPrefab;
+
+    [SerializeField] private float flyingSpawnChance = 0.25f;
     [SerializeField] private TurretUIManager uiManager;
     [SerializeField] private TurretShooter[] turretShooters;
 
@@ -136,8 +139,19 @@ private int remainingBunkers;
             return;
         }
 
-        GameObject enemy = Instantiate(
-            enemyPrefab,
+       Enemy prefabToSpawn;
+
+    if (Random.value < flyingSpawnChance)
+        {
+            prefabToSpawn = flyingEnemyPrefab;
+        }
+    else
+        {
+            prefabToSpawn = groundEnemyPrefab;
+        }
+
+        Enemy enemy = Instantiate(
+            prefabToSpawn,
             chosenSpawn.spawnLocation.position,
             chosenSpawn.spawnLocation.rotation
         );
@@ -208,8 +222,10 @@ private void SpawnBoss()
             enemyScript.SetWaveManager(this);
             enemyScript.SetTargetBunker(chosenSpawn.linkedBunker);
 
-            float bonusHealth = currentWave * 25f;
-            enemyScript.AddBonusHealth(bonusHealth);
+           int healthSteps = currentWave / 5;
+    float bonusHealth = healthSteps * 5f;
+
+    enemyScript.AddBonusHealth(bonusHealth);
         }
 
         enemiesSpawned = 1;
@@ -302,7 +318,7 @@ private void SpawnBoss()
                 Debug.Log($"Spawn lane disabled for {bunker.name}");
             }
         }
-        
+
         ClearWave();
 
         if (remainingBunkers <= 0)
