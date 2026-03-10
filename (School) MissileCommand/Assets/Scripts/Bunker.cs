@@ -5,10 +5,11 @@ public class Bunker : MonoBehaviour
     [Header("Bunker Settings")]
     [SerializeField] private float maxHealth = 100f;
 
-    [Header("Optional Visuals")]
-    [SerializeField] private GameObject destructionEffect;
-    [SerializeField] private GameObject bunkerIconUI;
+    [Header("Audio")]
+    [SerializeField] private AudioClip destructionSound;
+    [SerializeField] private AudioClip lowHealthWarning;
 
+    private bool warningPlayed = false;
     private float currentHealth;
     private bool isDestroyed = false;
 
@@ -24,6 +25,15 @@ public class Bunker : MonoBehaviour
         if (isDestroyed) return;
 
         currentHealth -= damage;
+        if (!warningPlayed && currentHealth <= maxHealth * 0.25f)
+        {
+            warningPlayed = true;
+
+            if (lowHealthWarning != null)
+            {
+                AudioSource.PlayClipAtPoint(lowHealthWarning, transform.position);
+            }
+        }
 
         if (currentHealth <= 0f)
         {
@@ -37,14 +47,10 @@ public class Bunker : MonoBehaviour
 
         isDestroyed = true;
 
-        if (destructionEffect != null)
+        
+        if (destructionSound != null)
         {
-            Instantiate(destructionEffect, transform.position, Quaternion.identity);
-        }
-
-        if (bunkerIconUI != null)
-        {
-            bunkerIconUI.SetActive(false);
+            AudioSource.PlayClipAtPoint(destructionSound, transform.position);
         }
 
         OnBunkerDestroyed?.Invoke(this);
