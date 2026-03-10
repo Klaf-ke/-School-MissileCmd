@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float maxHealth = 3f;
     [SerializeField] protected float damageToBunker = 1f;
     [SerializeField] protected float speed = 5f;
+    [SerializeField] private AudioClip deathSound;
 
     protected float currentHealth;
 
@@ -72,6 +73,11 @@ public class Enemy : MonoBehaviour
         if (isDead) return;
 
         isDead = true;
+        
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayEnemyDeath();
+        }
 
         if (waveManager != null)
         {

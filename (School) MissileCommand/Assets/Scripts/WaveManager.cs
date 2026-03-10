@@ -14,6 +14,9 @@ public class WaveManager : MonoBehaviour
     [Header("Wave Settings")]
     [SerializeField] private float minSpawnDelay = 0.5f;
     [SerializeField] private float maxSpawnDelay = 2f;
+    [SerializeField] private AudioClip waveCompleteSound;
+    [SerializeField] private int maxEnemiesAlive = 15;
+    [SerializeField] private LooseScreenManager looseScreenManager;
 
     [SerializeField] private int baseEnemiesPerWave = 5;
     [SerializeField] private float difficultyMultiplier = 1.5f;
@@ -38,7 +41,7 @@ public class WaveManager : MonoBehaviour
     [Header("Spawn Points")]
     [SerializeField] private SpawnPoint[] spawnPoints;
 
-
+    private bool waveInProgress = false;
     [System.Serializable]
     public class SpawnPoint
     {
@@ -77,24 +80,45 @@ private int remainingBunkers;
 
 
     private void Update()
-    {
-    // Debug wave Skip
-       
-        if (Input.GetKeyDown(KeyCode.K))
         {
-            ClearWave();
+    
+        if (Input.GetKeyDown(KeyCode.K))
+            {
+                ClearWave();
+            }
+
+    
+        if (Input.GetKeyDown(KeyCode.L))
+            {
+                SkipWave();
+            }
+
+        if (currentWave % 5 == 0 && enemiesAlive > 0)
+    {
+        Enemy boss = FindFirstObjectByType<Enemy>();
+
+        if (boss == null)
+        {
+            enemiesAlive = 0;
         }
-        
     }
+
+
+
+    }   
 
     private void StartWave()
     {
+        if (remainingBunkers <= 0) return; 
+
         Debug.Log("Starting Wave: " + currentWave);
 
         enemiesSpawned = 0;
         enemiesAlive = 0;
+        waveInProgress = true;
 
-    
+        maxEnemiesAlive = 10 + currentWave;
+
         if (currentWave % 5 == 0)
         {
             enemiesToSpawn = 1;
@@ -106,28 +130,57 @@ private int remainingBunkers;
             return;
         }
 
-    
         enemiesToSpawn = Mathf.RoundToInt(
-            baseEnemiesPerWave * Mathf.Pow(difficultyMultiplier, currentWave - 1)
+        baseEnemiesPerWave * Mathf.Pow(difficultyMultiplier, currentWave - 1)
         );
 
         if (uiManager != null)
             uiManager.SetWave(currentWave, enemiesToSpawn);
 
+        UpgradeTurrets();
+
         StartCoroutine(SpawnWave());
     }
 
-    private IEnumerator SpawnWave()
+private IEnumerator SpawnWave()
     {
         while (enemiesSpawned < enemiesToSpawn)
         {
-            SpawnEnemy();
-            enemiesSpawned++;
+            if (enemiesAlive < maxEnemiesAlive)
+            {
+                SpawnEnemy();
+                enemiesSpawned++;
+            }
 
-            float randomDelay = Random.Range(minSpawnDelay, maxSpawnDelay);
-            yield return new WaitForSeconds(randomDelay);
+            yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
         }
+
+        while (enemiesAlive > 0)
+            yield return null;
+
+        WaveCompleted();
     }
+
+    private void WaveCompleted()
+    {
+        waveInProgress = false;
+
+        if (waveCompleteSound != null)
+            AudioSource.PlayClipAtPoint(waveCompleteSound, Vector3.zero);
+
+        if (turretShooters != null)
+        {
+            foreach (var turret in turretShooters)
+            {
+                if (turret != null)
+                turret.AddAmmo(ammoRewardPerWave + (currentWave * 2));
+            }
+        }
+
+        currentWave++;
+        Invoke(nameof(StartWave), 2f);
+    }
+
 
     private void SpawnEnemy()
     {
@@ -139,13 +192,13 @@ private int remainingBunkers;
             return;
         }
 
-       Enemy prefabToSpawn;
+        Enemy prefabToSpawn;
 
-    if (Random.value < flyingSpawnChance)
+        if (Random.value < flyingSpawnChance)
         {
             prefabToSpawn = flyingEnemyPrefab;
         }
-    else
+        else
         {
             prefabToSpawn = groundEnemyPrefab;
         }
@@ -156,42 +209,22 @@ private int remainingBunkers;
             chosenSpawn.spawnLocation.rotation
         );
 
-        enemiesAlive++;
-
         Enemy enemyScript = enemy.GetComponent<Enemy>();
         if (enemyScript != null)
         {
             enemyScript.SetWaveManager(this);
             enemyScript.SetTargetBunker(chosenSpawn.linkedBunker);
         }
-    }
+     }   
 
-    public void EnemyDied()
-    {
-        enemiesAlive--;
-
-        
-        if (uiManager != null)
-            uiManager.EnemyKilled();
-
-        if (enemiesAlive <= 0 && enemiesSpawned >= enemiesToSpawn)
+       public void EnemyDied()
         {
-            
-           if (turretShooters != null)
-        {
-        foreach (TurretShooter turret in turretShooters)
-            {
-            if (turret != null)
-                {
-                turret.AddAmmo(ammoRewardPerWave + (currentWave * 2));
-                }
-            }
-        }
+            enemiesAlive--;
 
-         currentWave++;
-         Invoke(nameof(StartWave), 2f);
-        }
-    }
+            if (uiManager != null)
+                uiManager.EnemyKilled();
+        }   
+    
 
 private void SpawnBoss()
     {
@@ -214,6 +247,11 @@ private void SpawnBoss()
             bossSpawnPoint.position,
             bossSpawnPoint.rotation
         );
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayBossSpawn();
+        }
 
     Enemy enemyScript = boss.GetComponent<Enemy>();
 
@@ -285,24 +323,33 @@ private void SpawnBoss()
         Time.timeScale = 1f;
     }
 
-        private void ClearWave()
-    {
-        Debug.Log("Wave Cleared (Debug)");
-
-    
-        Enemy[] enemies = GameObject.FindObjectsByType<Enemy>(FindObjectsSortMode.None);
-
-        foreach (Enemy enemy in enemies)
+    private void ClearWave()
         {
-            enemy.TakeDamage(9999);
+            Debug.Log("Wave Cleared (Debug)");
+
+            Enemy[] enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None);
+
+            foreach (Enemy enemy in enemies)
+            {
+                Destroy(enemy.gameObject);
+            }
+
+            enemiesAlive = 0;
         }
+
+    private void SkipWave()
+    {
+        Debug.Log("Wave Skipped (Debug)");
+
+        StopAllCoroutines();
 
         enemiesAlive = 0;
         enemiesSpawned = enemiesToSpawn;
 
-    
-        EnemyDied();
+        WaveCompleted();
     }
+
+
 
 
     private void HandleBunkerDestroyed(Bunker bunker)
@@ -336,6 +383,8 @@ private void SpawnBoss()
     
     StopAllCoroutines();
 
+     if (looseScreenManager != null)
+        looseScreenManager.ShowLooseScreen();
 
     Time.timeScale = 0f;
     }
@@ -362,6 +411,15 @@ private void SpawnBoss()
         return activeSpawns[Random.Range(0, activeSpawns.Count)];
     }
 
-
+    private void UpgradeTurrets()
+    {
+        foreach (TurretShooter turret in turretShooters)
+        {
+            if (turret != null)
+            {
+                turret.UpgradeTurret(currentWave);
+            }
+        }
+    }   
 
 }
