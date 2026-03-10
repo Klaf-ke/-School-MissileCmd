@@ -8,6 +8,7 @@ public class TurretShooter : MonoBehaviour
     public Transform[] firePoints;
     public float fireRate = 0.25f;
     public float projectileForce = 40f;
+    [SerializeField] private AudioClip fireSound;
 
     [Header("Damage Settings")]
     public float damage = 10f;
@@ -46,13 +47,23 @@ public class TurretShooter : MonoBehaviour
             Input.GetButton("Fire1") ||
             Input.GetKey(KeyCode.Space);
 
-        if (isFiring && Time.time >= nextFireTime && currentAmmo > 0)
+        if (isFiring && Time.time >= nextFireTime)
+    {
+        if (currentAmmo > 0)
         {
             Shoot();
             currentAmmo--;
             nextFireTime = Time.time + fireRate;
             UpdateAmmoUI();
         }
+            else
+        {   
+            if (!isReloading && reserveAmmo > 0)
+            {
+                StartCoroutine(Reload());
+            }
+        }
+}
 
     
         if (Input.GetKeyDown(KeyCode.R))
@@ -81,18 +92,21 @@ public class TurretShooter : MonoBehaviour
         }
 
     
+        if (fireSound != null)
+        {
+            AudioSource.PlayClipAtPoint(fireSound, firePoint.position);
+        }
+
         Projectile projectileScript = projectile.GetComponent<Projectile>();
         if (projectileScript != null)
         {
             projectileScript.SetDamage(damage);
         }
 
-   
         currentBarrelIndex++;
         if (currentBarrelIndex >= firePoints.Length)
             currentBarrelIndex = 0;
     }
-
     IEnumerator Reload()
     {
         if (reserveAmmo <= 0)
@@ -101,6 +115,11 @@ public class TurretShooter : MonoBehaviour
         isReloading = true;
 
         yield return new WaitForSeconds(reloadTime);
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayReload();
+        }
 
         int ammoNeeded = magazineSize - currentAmmo;
 
@@ -118,10 +137,36 @@ public class TurretShooter : MonoBehaviour
     {
         reserveAmmo += amount;
         reserveAmmo = Mathf.Clamp(reserveAmmo, 0, maxReserveAmmo);
+
+        UpdateAmmoUI(); 
     }
     private void UpdateAmmoUI()
     {
         if (isActive && uiManager != null)
         uiManager.UpdateAmmo(currentAmmo, reserveAmmo);
     }
+
+    public void UpgradeTurret(int wave)
+    {
+    
+        if (wave % 5 == 0)
+        {
+            magazineSize += 5;
+            currentAmmo += 5;
+        }
+
+    
+        reloadTime = Mathf.Max(0.8f, reloadTime - 0.05f);
+
+    
+        fireRate = Mathf.Max(0.08f, fireRate - 0.01f);
+
+        UpdateAmmoUI();
+    }
+
+
+
+
+
+
 }

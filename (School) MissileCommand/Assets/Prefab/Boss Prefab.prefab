@@ -165,3 +165,4 @@ MonoBehaviour:
   maxHealth: 3
   damageToBunker: 1
   speed: 5
+  deathSound: {fileID: 8300000, guid: fd8d5f7914271dc47bf05889e42f041c, type: 3}
