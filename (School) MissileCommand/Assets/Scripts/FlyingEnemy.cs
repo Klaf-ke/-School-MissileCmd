@@ -15,11 +15,10 @@ public class FlyingEnemy : Enemy
         hoverOffset = Random.Range(0f, Mathf.PI * 2f);
     }
 
-   protected override void Move()
+protected override void Move()
     {
         if (targetBunker == null) return;
 
-    
         Vector3 targetXZ = new Vector3(
             targetBunker.transform.position.x,
             transform.position.y,
@@ -30,9 +29,15 @@ public class FlyingEnemy : Enemy
 
         transform.position += horizontalDir * speed * Time.deltaTime;
 
-   
+    
+        if (horizontalDir != Vector3.zero)
+        {
+            Quaternion lookRot = Quaternion.LookRotation(horizontalDir);
+            transform.rotation = lookRot * Quaternion.Euler(0f, -90f, 0f);
+        }
+
         float hoverY = hoverCenterHeight +
-                    Mathf.Sin(Time.time * hoverSpeed + hoverOffset) * hoverAmplitude;
+            Mathf.Sin(Time.time * hoverSpeed + hoverOffset) * hoverAmplitude;
 
         Vector3 pos = transform.position;
         pos.y = hoverY;
