@@ -17,6 +17,7 @@ public class TurretShooter : MonoBehaviour
     [Header("Ammo Settings")]
     public int magazineSize = 12;
     public int maxReserveAmmo = 120;
+    public int startingReserveAmmo = 60;
     public float reloadTime = 2f;
 
     [HideInInspector] public bool isActive = false;
@@ -34,8 +35,9 @@ public class TurretShooter : MonoBehaviour
     void Start()
     {
         currentAmmo = magazineSize;
-        reserveAmmo = maxReserveAmmo;
+        reserveAmmo = startingReserveAmmo;
         UpdateAmmoUI();
+        
     }
 
     void Update()
@@ -75,38 +77,41 @@ public class TurretShooter : MonoBehaviour
         }
     }
 
-    void Shoot()
+void Shoot()
+{
+    Transform firePoint = firePoints[currentBarrelIndex];
+
+    Quaternion rotationOffset = Quaternion.Euler(-90f, 0f, 0f);
+
+    GameObject projectile = Instantiate(
+        projectilePrefab,
+        firePoint.position,
+        firePoint.rotation * rotationOffset
+    );
+
+    Rigidbody rb = projectile.GetComponent<Rigidbody>();
+
+    if (rb != null)
     {
-        Transform firePoint = firePoints[currentBarrelIndex];
-
-        GameObject projectile = Instantiate(
-            projectilePrefab,
-            firePoint.position,
-            firePoint.rotation
-        );
-
-        Rigidbody rb = projectile.GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.linearVelocity = firePoint.forward * projectileForce;
-        }
-
-    
-        if (fireSound != null)
-        {
-            AudioSource.PlayClipAtPoint(fireSound, firePoint.position);
-        }
-
-        Projectile projectileScript = projectile.GetComponent<Projectile>();
-        if (projectileScript != null)
-        {
-            projectileScript.SetDamage(damage);
-        }
-
-        currentBarrelIndex++;
-        if (currentBarrelIndex >= firePoints.Length)
-            currentBarrelIndex = 0;
+        rb.linearVelocity = firePoint.forward * projectileForce;
     }
+
+    if (fireSound != null)
+    {
+        AudioSource.PlayClipAtPoint(fireSound, firePoint.position);
+    }
+
+    Projectile projectileScript = projectile.GetComponent<Projectile>();
+
+    if (projectileScript != null)
+    {
+        projectileScript.SetDamage(damage);
+    }
+
+    currentBarrelIndex++;
+    if (currentBarrelIndex >= firePoints.Length)
+        currentBarrelIndex = 0;
+}
     IEnumerator Reload()
     {
         if (reserveAmmo <= 0)
@@ -148,7 +153,8 @@ public class TurretShooter : MonoBehaviour
 
     public void UpgradeTurret(int wave)
     {
-    
+        maxReserveAmmo += 10;
+
         if (wave % 5 == 0)
         {
             magazineSize += 5;

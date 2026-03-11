@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private float speed = 40f;
     [SerializeField] private float lifeTime = 5f;
 
     [SerializeField] private float defaultDamage = 1f;
@@ -10,20 +9,12 @@ public class Projectile : MonoBehaviour
 
     private void Start()
     {
-        
         if (damage <= 0)
             damage = defaultDamage;
-
-        Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.linearVelocity = transform.forward * speed;
-        }
 
         Destroy(gameObject, lifeTime);
     }
 
-    
     public void SetDamage(float amount)
     {
         damage = amount;
@@ -38,7 +29,5 @@ public class Projectile : MonoBehaviour
             enemy.TakeDamage(damage);
             Destroy(gameObject);
         }
-
-        
     }
 }

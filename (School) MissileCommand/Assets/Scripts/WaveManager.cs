@@ -15,7 +15,6 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private float minSpawnDelay = 0.5f;
     [SerializeField] private float maxSpawnDelay = 2f;
     [SerializeField] private AudioClip waveCompleteSound;
-    [SerializeField] private int maxEnemiesAlive = 15;
     [SerializeField] private LooseScreenManager looseScreenManager;
 
     [SerializeField] private int baseEnemiesPerWave = 5;
@@ -93,15 +92,7 @@ private int remainingBunkers;
                 SkipWave();
             }
 
-        if (currentWave % 5 == 0 && enemiesAlive > 0)
-    {
-        Enemy boss = FindFirstObjectByType<Enemy>();
-
-        if (boss == null)
-        {
-            enemiesAlive = 0;
-        }
-    }
+        
 
 
 
@@ -117,7 +108,7 @@ private int remainingBunkers;
         enemiesAlive = 0;
         waveInProgress = true;
 
-        maxEnemiesAlive = 10 + currentWave;
+        
 
         if (currentWave % 5 == 0)
         {
@@ -130,9 +121,8 @@ private int remainingBunkers;
             return;
         }
 
-        enemiesToSpawn = Mathf.RoundToInt(
-        baseEnemiesPerWave * Mathf.Pow(difficultyMultiplier, currentWave - 1)
-        );
+         
+        enemiesToSpawn = baseEnemiesPerWave + (currentWave * 4);
 
         if (uiManager != null)
             uiManager.SetWave(currentWave, enemiesToSpawn);
@@ -142,27 +132,27 @@ private int remainingBunkers;
         StartCoroutine(SpawnWave());
     }
 
-private IEnumerator SpawnWave()
+   private IEnumerator SpawnWave()
+{
+    while (enemiesSpawned < enemiesToSpawn)
     {
-        while (enemiesSpawned < enemiesToSpawn)
-        {
-            if (enemiesAlive < maxEnemiesAlive)
-            {
-                SpawnEnemy();
-                enemiesSpawned++;
-            }
+        SpawnEnemy();
+        enemiesSpawned++;
 
-            yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
-        }
-
-        while (enemiesAlive > 0)
-            yield return null;
-
-        WaveCompleted();
+        yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
     }
+
+    while (enemiesAlive > 0)
+        yield return null;
+
+    WaveCompleted();
+}
 
     private void WaveCompleted()
     {
+        if (!waveInProgress) return;
+
+        
         waveInProgress = false;
 
         if (waveCompleteSound != null)
@@ -195,13 +185,9 @@ private IEnumerator SpawnWave()
         Enemy prefabToSpawn;
 
         if (Random.value < flyingSpawnChance)
-        {
             prefabToSpawn = flyingEnemyPrefab;
-        }
         else
-        {
             prefabToSpawn = groundEnemyPrefab;
-        }
 
         Enemy enemy = Instantiate(
             prefabToSpawn,
@@ -209,21 +195,28 @@ private IEnumerator SpawnWave()
             chosenSpawn.spawnLocation.rotation
         );
 
+        enemiesAlive++; 
+
         Enemy enemyScript = enemy.GetComponent<Enemy>();
         if (enemyScript != null)
         {
             enemyScript.SetWaveManager(this);
             enemyScript.SetTargetBunker(chosenSpawn.linkedBunker);
         }
-     }   
+    }
 
-       public void EnemyDied()
+        public void EnemyDied()
+    {
+        enemiesAlive--;
+
+        if (uiManager != null)
+            uiManager.EnemyKilled();
+
+        if (waveInProgress && enemiesAlive <= 0 && enemiesSpawned >= enemiesToSpawn)
         {
-            enemiesAlive--;
-
-            if (uiManager != null)
-                uiManager.EnemyKilled();
-        }   
+            WaveCompleted();
+        }
+    }
     
 
 private void SpawnBoss()
@@ -304,22 +297,22 @@ private void SpawnBoss()
         yield return new WaitForSecondsRealtime(1f);
 
     
-        t = 0f;
+    t = 0f;
+    Quaternion zoomRotation = mainCamera.transform.rotation;
 
-        while (t < duration)
-        {
-            t += Time.unscaledDeltaTime;
-            float lerpValue = t / duration;
+while (t < duration)
+    {
+        t += Time.unscaledDeltaTime;
+        float lerpValue = t / duration;
 
             mainCamera.transform.position =
-                Vector3.Lerp(zoomPosition, originalPosition, lerpValue);
+        Vector3.Lerp(zoomPosition, originalPosition, lerpValue);
 
-            mainCamera.transform.rotation =
-                Quaternion.Lerp(mainCamera.transform.rotation, originalRotation, lerpValue);
+        mainCamera.transform.rotation =
+            Quaternion.Lerp(zoomRotation, originalRotation, lerpValue);
 
-            yield return null;
-        }
-
+        yield return null;
+    }
         Time.timeScale = 1f;
     }
 
