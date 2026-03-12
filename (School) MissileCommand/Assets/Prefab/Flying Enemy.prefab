@@ -151,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   damageToBunker: 1
-  speed: 12.53
+  speed: 14
   deathSound: {fileID: 0}
   hoverCenterHeight: 6
   hoverAmplitude: 1.4
