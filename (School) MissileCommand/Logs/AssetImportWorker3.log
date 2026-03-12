@@ -2,7 +2,7 @@ Using pre-set license
 Built from '6000.0/staging' branch; Version is '6000.0.56f1 (9c7b5e468860) revision 10255198'; Using compiler version '193933523'; Build Type 'Release'
 OS: 'Windows 11  (10.0.26200) 64bit Core' Language: 'en' Physical Memory: 65402 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
-Date: 2026-03-11T02:48:13Z
+Date: 2026-03-12T04:01:08Z
 
 COMMAND LINE ARGUMENTS:
 C:\Program Files\Unity\Hub\Editor\6000.0.56f1\Editor\Unity.exe
@@ -16,7 +16,7 @@ C:/Users/mumap/Documents/Personal/School/(School Repo Root) MissileCmd/(School) 
 -logFile
 Logs/AssetImportWorker3.log
 -srvPort
-58968
+52149
 -job-worker-count
 7
 -background-job-worker-count
@@ -62,12 +62,12 @@ C:/Users/mumap/Documents/Personal/School/(School Repo Root) MissileCmd/(School) 
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [28328]  Target information:
+Player connection [41168]  Target information:
 
-Player connection [28328]  * "[IP] 192.168.1.131 [Port] 0 [Flags] 2 [Guid] 3292031144 [EditorId] 3292031144 [Version] 1048832 [Id] WindowsEditor(7,Moonrock) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [41168]  * "[IP] 192.168.1.131 [Port] 0 [Flags] 2 [Guid] 1367480846 [EditorId] 1367480846 [Version] 1048832 [Id] WindowsEditor(7,Moonrock) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [28328] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [28328] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [41168] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [41168] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 7
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -95,43 +95,43 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.0.56f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.0.56f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.0.56f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56732
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56856
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.56f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002891 seconds.
-- Loaded All Assemblies, in  0.315 seconds
+Registered in 0.002661 seconds.
+- Loaded All Assemblies, in  0.329 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.262 seconds
-Domain Reload Profiling: 576ms
-	BeginReloadAssembly (101ms)
+- Finished resetting the current domain, in  0.251 seconds
+Domain Reload Profiling: 578ms
+	BeginReloadAssembly (105ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (30ms)
-	RebuildNativeTypeToScriptingClass (13ms)
-	initialDomainReloadingComplete (45ms)
-	LoadAllAssembliesAndSetupDomain (124ms)
-		LoadAssemblies (98ms)
+	RebuildCommonClasses (29ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (41ms)
+	LoadAllAssembliesAndSetupDomain (142ms)
+		LoadAssemblies (102ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (122ms)
-			TypeCache.Refresh (120ms)
-				TypeCache.ScanAssembly (110ms)
+		AnalyzeDomain (140ms)
+			TypeCache.Refresh (138ms)
+				TypeCache.ScanAssembly (128ms)
 			BuildScriptInfoCaches (0ms)
 			ResolveRequiredComponents (0ms)
-	FinalizeReload (263ms)
+	FinalizeReload (251ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (235ms)
+		SetupLoadedEditorAssemblies (222ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (16ms)
 			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (53ms)
-			ProcessInitializeOnLoadAttributes (119ms)
-			ProcessInitializeOnLoadMethodAttributes (43ms)
+			BeforeProcessingInitializeOnLoad (46ms)
+			ProcessInitializeOnLoadAttributes (114ms)
+			ProcessInitializeOnLoadMethodAttributes (42ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -140,99 +140,135 @@ Domain Reload Profiling: 576ms
 Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.232 seconds
+- Loaded All Assemblies, in  0.231 seconds
 Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.278 seconds
-Domain Reload Profiling: 509ms
-	BeginReloadAssembly (145ms)
+- Finished resetting the current domain, in  0.279 seconds
+Domain Reload Profiling: 508ms
+	BeginReloadAssembly (151ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (5ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (23ms)
-	RebuildCommonClasses (37ms)
+		CreateAndSetChildDomain (25ms)
+	RebuildCommonClasses (30ms)
 	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (18ms)
+	initialDomainReloadingComplete (17ms)
 	LoadAllAssembliesAndSetupDomain (20ms)
-		LoadAssemblies (85ms)
+		LoadAssemblies (88ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
 		AnalyzeDomain (15ms)
 			TypeCache.Refresh (9ms)
 				TypeCache.ScanAssembly (6ms)
 			BuildScriptInfoCaches (3ms)
 			ResolveRequiredComponents (2ms)
-	FinalizeReload (279ms)
+	FinalizeReload (280ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (184ms)
+		SetupLoadedEditorAssemblies (187ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (2ms)
 			SetLoadedEditorAssemblies (3ms)
-			BeforeProcessingInitializeOnLoad (56ms)
-			ProcessInitializeOnLoadAttributes (97ms)
-			ProcessInitializeOnLoadMethodAttributes (21ms)
+			BeforeProcessingInitializeOnLoad (57ms)
+			ProcessInitializeOnLoadAttributes (99ms)
+			ProcessInitializeOnLoadMethodAttributes (20ms)
 			AfterProcessingInitializeOnLoad (5ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (6ms)
+		AwakeInstancesAfterBackupRestoration (5ms)
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
 Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 432 unused Assets / (127.6 KB). Loaded Objects now: 946.
+Unloading 432 unused Assets / (128.7 KB). Loaded Objects now: 946.
 Memory consumption went from 57.4 MB to 57.2 MB.
-Total: 2.738700 ms (FindLiveObjects: 0.060500 ms CreateObjectMapping: 0.014800 ms MarkObjects: 2.536700 ms  DeleteObjects: 0.125900 ms)
+Total: 2.899300 ms (FindLiveObjects: 0.081800 ms CreateObjectMapping: 0.020300 ms MarkObjects: 2.674700 ms  DeleteObjects: 0.121600 ms)
 
 ========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.255 seconds
-Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
-Native extension for WindowsStandalone target not found
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.339 seconds
-Domain Reload Profiling: 591ms
-	BeginReloadAssembly (160ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (5ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (28ms)
-	RebuildCommonClasses (33ms)
-	RebuildNativeTypeToScriptingClass (17ms)
-	initialDomainReloadingComplete (21ms)
-	LoadAllAssembliesAndSetupDomain (21ms)
-		LoadAssemblies (95ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (16ms)
-			TypeCache.Refresh (3ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (8ms)
-			ResolveRequiredComponents (3ms)
-	FinalizeReload (339ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (233ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (2ms)
-			SetLoadedEditorAssemblies (3ms)
-			BeforeProcessingInitializeOnLoad (75ms)
-			ProcessInitializeOnLoadAttributes (122ms)
-			ProcessInitializeOnLoadMethodAttributes (24ms)
-			AfterProcessingInitializeOnLoad (7ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (7ms)
-Refreshing native plugins compatible for Editor in 0.00 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 430 unused Assets / (36.0 KB). Loaded Objects now: 946.
-Memory consumption went from 56.9 MB to 56.9 MB.
-Total: 3.471300 ms (FindLiveObjects: 0.102800 ms CreateObjectMapping: 0.031900 ms MarkObjects: 3.247500 ms  DeleteObjects: 0.088000 ms)
+Received Import Request.
+  Time since last request: 436983.256100 seconds.
+  path: Assets/Vefects/Free Galaxy Shader URP/Galaxy/Textures/T_VFX_Lush_Galaxy_Clouds_01_Contrast.tga
+  artifactKey: Guid(34def95d4ba14174f936b6b7336cbaa7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Vefects/Free Galaxy Shader URP/Galaxy/Textures/T_VFX_Lush_Galaxy_Clouds_01_Contrast.tga using Guid(34def95d4ba14174f936b6b7336cbaa7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'cc1144561a5d039ee9c71bfdbde78cfa') in 0.0777895 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
 
-Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Vefects/Free Galaxy Shader URP/Galaxy/Textures/T_VFX_Lush_Galaxy_Space_Panorama_Stars_01.tga
+  artifactKey: Guid(644f27aae8365bc4eac6e7c2899c78fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Vefects/Free Galaxy Shader URP/Galaxy/Textures/T_VFX_Lush_Galaxy_Space_Panorama_Stars_01.tga using Guid(644f27aae8365bc4eac6e7c2899c78fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '354270e87094601aab634633edb3d5c8') in 0.0130237 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Vefects/Free Galaxy Shader URP/Galaxy/Textures/T_VFX_Lush_Galaxy_Space_Panorama_Cube_01_Saturated.tga
+  artifactKey: Guid(14e50fcbc1a2ff842ba76151cc0d64d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Vefects/Free Galaxy Shader URP/Galaxy/Textures/T_VFX_Lush_Galaxy_Space_Panorama_Cube_01_Saturated.tga using Guid(14e50fcbc1a2ff842ba76151cc0d64d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '48b85fb8bc00c894dd2c20a3147a22c2') in 0.0591548 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Vefects/Free Galaxy Shader URP/Galaxy/Textures/T_VFX_Lush_Galaxy_Space_Panorama_Cube_02.hdr
+  artifactKey: Guid(0d6c072c39385c44688cac0f7415d10b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Vefects/Free Galaxy Shader URP/Galaxy/Textures/T_VFX_Lush_Galaxy_Space_Panorama_Cube_02.hdr using Guid(0d6c072c39385c44688cac0f7415d10b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b49fa4a680922b504be1658af6e69005') in 0.0181041 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Vefects/Free Galaxy Shader URP/Galaxy/Textures/T_VFX_Lush_Galaxy_Clouds_02_Contrast.tga
+  artifactKey: Guid(acd2b7b50f15fa248a2956583615926a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Vefects/Free Galaxy Shader URP/Galaxy/Textures/T_VFX_Lush_Galaxy_Clouds_02_Contrast.tga using Guid(acd2b7b50f15fa248a2956583615926a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '400c4e452b9bcc00c0796559a78da56d') in 0.0106711 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Vefects/Free Galaxy Shader URP/Galaxy/Textures/T_VFX_Lush_Galaxy_Clouds_04.tga
+  artifactKey: Guid(21293b429c54d1047aa402fc8e232935) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Vefects/Free Galaxy Shader URP/Galaxy/Textures/T_VFX_Lush_Galaxy_Clouds_04.tga using Guid(21293b429c54d1047aa402fc8e232935) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '594f34fdbf0f519313fbce0509888f5f') in 0.0114714 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.974039 seconds.
+  path: Assets/Vefects/Free Galaxy Shader URP/Galaxy/Materials/M_VFX_URP_Stylized_Galaxy_01_Inverted_Reflection.mat
+  artifactKey: Guid(c4e5faf19fb6b88438fd06a95512b2f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Vefects/Free Galaxy Shader URP/Galaxy/Materials/M_VFX_URP_Stylized_Galaxy_01_Inverted_Reflection.mat using Guid(c4e5faf19fb6b88438fd06a95512b2f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)Shader 'Vefects/SH_Vefects_URP_Galaxy': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+ -> (artifact id: 'cde9ade42b3d81a762c7a7fcd36b9458') in 0.0430367 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 5
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Vefects/Free Galaxy Shader URP/Galaxy/Materials/M_VFX_URP_Stylized_Galaxy_02.mat
+  artifactKey: Guid(d02c55bf464eb6f4792de384c3747344) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Vefects/Free Galaxy Shader URP/Galaxy/Materials/M_VFX_URP_Stylized_Galaxy_02.mat using Guid(d02c55bf464eb6f4792de384c3747344) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)Shader 'Vefects/SH_Vefects_URP_Galaxy': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+ -> (artifact id: 'de109f6fa78479d17c5797bb0594f0ca') in 0.0084216 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 5
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Vefects/Free Galaxy Shader URP/Galaxy/Materials/M_VFX_URP_Stylized_Galaxy_02_Reflection.mat
+  artifactKey: Guid(efd1bce8f2e9fc64db19befd7f65f2b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Vefects/Free Galaxy Shader URP/Galaxy/Materials/M_VFX_URP_Stylized_Galaxy_02_Reflection.mat using Guid(efd1bce8f2e9fc64db19befd7f65f2b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)Shader 'Vefects/SH_Vefects_URP_Galaxy': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+ -> (artifact id: 'f0a5f4988246952b5a167f77c3620f39') in 0.0072634 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 5
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Vefects/Free Galaxy Shader URP/Galaxy/Materials/M_VFX_URP_Stylized_Galaxy_03_Reflection.mat
+  artifactKey: Guid(ebb193eee9e482c4fa8aef8ba55b779e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Vefects/Free Galaxy Shader URP/Galaxy/Materials/M_VFX_URP_Stylized_Galaxy_03_Reflection.mat using Guid(ebb193eee9e482c4fa8aef8ba55b779e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)Shader 'Vefects/SH_Vefects_URP_Galaxy': fallback shader 'Hidden/Shader Graph/FallbackError' not found
+ -> (artifact id: 'a89996b083e9f1238765b827cdf30f87') in 0.0086505 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 6
+
 Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
 AssetImportWorker is now disconnected from the server
 Process exiting
